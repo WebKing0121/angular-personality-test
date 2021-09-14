@@ -1,0 +1,17 @@
+.quiz-stepper {
+  ::ng-deep {
+    .mat-horizontal-stepper-header-container {
+      display: none !important;
+    }
+  }
+
+  .answers-group {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 24px;
+  }
+
+  .answer-radio-button {
+    margin: 5px 0;
+  }
+}

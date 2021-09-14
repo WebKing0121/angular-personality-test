@@ -1,0 +1,26 @@
+<mat-stepper class="quiz-stepper">
+  <mat-step *ngFor="let query of queries; let idx=index;">
+    <h4>{{query.question}}</h4>
+    <mat-radio-group class="answers-group" [(ngModel)]="query.selected">
+      <mat-radio-button class="answer-radio-button" *ngFor="let option of query.answers; let op_idx=index;" [value]="op_idx">
+        {{option.text}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <div class="button-group">
+      <button mat-button matStepperPrevious *ngIf="idx">Back</button>
+      <button
+        mat-button
+        matStepperNext
+        [disabled]="query.selected === -1"
+        *ngIf="idx < queries.length - 1">
+        Next</button>
+      <button
+        mat-button
+        (click)="dialogRef.close(queryData)"
+        [disabled]="query.selected === -1"
+        *ngIf="idx === queries.length - 1">
+        Finish</button>
+    </div>
+  </mat-step>
+</mat-stepper>
